@@ -10,12 +10,26 @@ export default {
    */
   id: 'measurements-table',
 
-  preRegistration({ servicesManager, commandsManager, configuration = {} }) {
-    init({ servicesManager, commandsManager, configuration });
+  preRegistration({
+    servicesManager,
+    commandsManager,
+    configuration = {}
+  }) {
+    init({
+      servicesManager,
+      commandsManager,
+      configuration
+    });
   },
 
-  getPanelModule({ servicesManager, commandsManager }) {
-    const { UINotificationService, UIDialogService } = servicesManager.services;
+  getPanelModule({
+    servicesManager,
+    commandsManager
+  }) {
+    const {
+      UINotificationService,
+      UIDialogService
+    } = servicesManager.services;
 
     const showLabellingDialog = (props, measurementData) => {
       if (!UIDialogService) {
@@ -23,7 +37,9 @@ export default {
         return;
       }
 
-      UIDialogService.dismiss({ id: 'labelling' });
+      UIDialogService.dismiss({
+        id: 'labelling'
+      });
       UIDialogService.create({
         id: 'labelling',
         centralize: true,
@@ -33,8 +49,14 @@ export default {
         contentProps: {
           measurementData,
           labellingDoneCallback: () =>
-            UIDialogService.dismiss({ id: 'labelling' }),
-          updateLabelling: ({ location, description, response }) => {
+            UIDialogService.dismiss({
+              id: 'labelling'
+            }),
+          updateLabelling: ({
+            location,
+            description,
+            response
+          }) => {
             measurementData.location = location || measurementData.location;
             measurementData.description = description || '';
             measurementData.response = response || measurementData.response;
@@ -49,38 +71,41 @@ export default {
       });
     };
 
-    const ExtendedConnectedMeasurementTable = () => (
-      <ConnectedMeasurementTable
-        onRelabel={tool =>
-          showLabellingDialog(
-            { editLocation: true, skipAddLabelButton: true },
-            tool
-          )
-        }
-        onEditDescription={tool =>
-          showLabellingDialog({ editDescriptionOnDialog: true }, tool)
-        }
-        onSaveComplete={message => {
+    const ExtendedConnectedMeasurementTable = () => ( <
+      ConnectedMeasurementTable onRelabel = {
+        tool =>
+        showLabellingDialog({
+            editLocation: true,
+            skipAddLabelButton: true
+          },
+          tool
+        )
+      }
+      onEditDescription = {
+        tool =>
+        showLabellingDialog({
+          editDescriptionOnDialog: true
+        }, tool)
+      }
+      onSaveComplete = {
+        message => {
           if (UINotificationService) {
             UINotificationService.show(message);
           }
-        }}
+        }
+      }
       />
     );
     return {
-      menuOptions: [
-        {
-          icon: 'list',
-          label: 'Measurements',
-          target: 'measurement-panel',
-        },
-      ],
-      components: [
-        {
-          id: 'measurement-panel',
-          component: ExtendedConnectedMeasurementTable,
-        },
-      ],
+      menuOptions: [{
+        icon: 'list',
+        label: 'Medidas',
+        target: 'measurement-panel',
+      }, ],
+      components: [{
+        id: 'measurement-panel',
+        component: ExtendedConnectedMeasurementTable,
+      }, ],
       defaultContext: ['VIEWER'],
     };
   },

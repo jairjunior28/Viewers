@@ -229,7 +229,7 @@ function StudyListRoute(props) {
       <div className="study-list-header">
         <div className="header">
           <h1 style={{ fontWeight: 300, fontSize: '22px' }}>
-            {t('StudyList')}
+            {t('Listagem de estudos.')}
           </h1>
         </div>
         <div className="actions">
@@ -433,7 +433,7 @@ function _sortStudies(studies, field, order) {
   });
 
   // Sort by field
-  sortedStudies.sort(function(a, b) {
+  sortedStudies.sort(function (a, b) {
     let fieldA = a[field];
     let fieldB = b[field];
     if (field === 'StudyDate') {

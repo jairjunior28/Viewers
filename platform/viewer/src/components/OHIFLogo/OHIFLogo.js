@@ -1,6 +1,8 @@
 import './OHIFLogo.css';
 
 import { Icon } from '@ohif/ui';
+
+//import { LogoImg } from '../../assets/imgs/logo-branca';
 import React from 'react';
 
 function OHIFLogo() {
@@ -9,8 +11,9 @@ function OHIFLogo() {
       target="_blank"
       rel="noopener noreferrer"
       className="header-brand"
-      href="http://ohif.org"
+      href="http://genustecnologia.com.br"
     >
+
       <Icon name="ohif-logo" className="header-logo-image" />
       {/* Logo text would fit smaller displays at two lines:
        *
