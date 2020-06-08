@@ -45,7 +45,7 @@ function GeneralPreferences({ onClose }) {
       <div className="GeneralPreferences">
         <div className="language">
           <label htmlFor="language-select" className="languageLabel">
-            Language
+            Idioma
           </label>
           <LanguageSwitcher
             language={language}

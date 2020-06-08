@@ -27,7 +27,7 @@ function getDefaultButtonData() {
     },
     {
       id: 'annotate',
-      title: 'Annotation',
+      title: 'Annotação',
       className: 'imageViewerTool',
       icon: 'arrows-alt-h',
     },
